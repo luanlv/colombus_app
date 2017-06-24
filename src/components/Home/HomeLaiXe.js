@@ -4,7 +4,6 @@ import React from 'react';
 import Tags from './Tags';
 import agent from '../../agent';
 import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
@@ -17,7 +16,7 @@ import {Button, Row} from 'antd'
 const Promise = global.Promise;
 
 const mapStateToProps = state => ({
-  ...state.common,
+  ...state.home,
   appName: state.common.appName,
   token: state.common.token
 });
@@ -33,7 +32,12 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount() {
+    const tab = this.props.token ? 'feed' : 'all';
+    const articlesPromise = this.props.token ?
+      agent.Articles.feed :
+      agent.Articles.all;
 
+    // this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
   }
 
   componentWillUnmount() {
@@ -41,19 +45,33 @@ class Home extends React.Component {
   }
 
   render() {
-    if(this.props.currentUser.role === 'laixe')
-      this.context.router.replace('/laixe')
-    if(this.props.currentUser.role === 'it')
-      this.context.router.replace('/it')
     return (
       <div className="home-page">
+        <Row className="homeWr">
+          <Button
+            className="mt20"
+            style={{width: '100%'}}
+            type="dashed">Khai bao DO</Button>
+
+          <Button
+            className="mt20"
+            style={{width: '100%'}}
+            type="dashed">Danh sach DO</Button>
+
+          <Button
+            className="mt20"
+            style={{width: '100%'}}
+            type="dashed">Khai bao phu phi</Button>
+
+          <Button
+            className="mt20"
+            style={{width: '100%'}}
+            type="dashed">Danh sach phu phi</Button>
+
+        </Row>
       </div>
     );
   }
 }
-
-Home.contextTypes = {
-  router: PropTypes.object.isRequired
-};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

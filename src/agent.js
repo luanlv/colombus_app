@@ -3,8 +3,8 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-// const API_ROOT = 'http://localhost:8080';
-const API_ROOT = 'http://192.168.1.102:8080';
+const API_ROOT = 'http://localhost:8080';
+// const API_ROOT = 'http://192.168.1.102:8080';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -30,8 +30,8 @@ const requests = {
 const Auth = {
   current: () =>
     requests.get('/user'),
-  login: (email, password) =>
-    requests.post('/users/login', { user: { email, password } }),
+  login: (username, password, type) =>
+    requests.post(`/${type}/users/login`, { user: { username, password } }),
   register: (username, email, password) =>
     requests.post('/users', { user: { username, email, password } }),
   save: user =>
@@ -87,11 +87,31 @@ const Profile = {
     requests.del(`/profiles/${username}/follow`)
 };
 
+const LaiXe = {
+  themDO: data =>
+    requests.post('/laixe/do/them', {data}),
+  capnhapDO: data =>
+    requests.post('/laixe/do/capnhap', {data}),
+  themPhuPhi: data =>
+    requests.post('/laixe/phuphi/them', {data}),
+  capnhapPhuPhi: data =>
+    requests.post('/laixe/phuphi/capnhap', {data}),
+  listDO: () =>
+    requests.get(`/laixe/do/all`),
+  listPhuPhi: () =>
+    requests.get(`/laixe/phuphi/all`),
+  DObyId: (id) =>
+    requests.get(`/laixe/do/get/${id}`),
+  PhuPhibyId: (id) =>
+    requests.get(`/laixe/phuphi/get/${id}`),
+}
+
 export default {
   Articles,
   Auth,
   Comments,
   Profile,
   Tags,
+  LaiXe,
   setToken: _token => { token = _token; }
 };

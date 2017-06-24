@@ -7,6 +7,7 @@ import editor from './reducers/editor';
 import home from './reducers/home';
 import profile from './reducers/profile';
 import settings from './reducers/settings';
+import laixe from './reducers/laixe';
 
 export default combineReducers({
   article,
@@ -16,5 +17,6 @@ export default combineReducers({
   editor,
   home,
   profile,
-  settings
+  settings,
+  laixe
 });
