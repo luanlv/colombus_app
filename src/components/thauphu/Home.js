@@ -30,46 +30,30 @@ const mapDispatchToProps = dispatch => ({
 
 class Home extends React.Component {
   componentWillMount() {
-    const tab = this.props.token ? 'feed' : 'all';
-    const articlesPromise = this.props.token ?
-      agent.Articles.feed :
-      agent.Articles.all;
-    
-    // this.props.onLoad(tab, articlesPromise, Promise.all([agent.Tags.getAll(), articlesPromise()]));
   }
-  
+
   componentWillUnmount() {
     this.props.onUnload();
   }
-  
+
   render() {
     return (
       <div className="home-page">
         <Row className="homeWr">
-          <Link to="/it/laixe">
+          
+          <Link to="/thauphu/laixe">
             <Button
               className="mt20"
               style={{width: '100%'}}
-              type="dashed">Them tai xe</Button>
+              type="dashed">Danh sach lai xe</Button>
           </Link>
-          <Link to="/it/thauphu">
+          <Link to="/thauphu/themlaixe">
             <Button
               className="mt20"
               style={{width: '100%'}}
-              type="dashed">Them thau phu</Button>
+              type="dashed">Them lai xe</Button>
           </Link>
-          <Link to="/it/dieuhanh">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them dieu hanh</Button>
-          </Link>
-          <Link to="/it/autofill">
-            <Button
-              className="mt20"
-              style={{width: '100%'}}
-              type="dashed">Them thong tin</Button>
-          </Link>
+          
         </Row>
       </div>
     );

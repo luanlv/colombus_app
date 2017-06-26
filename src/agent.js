@@ -3,8 +3,9 @@ import _superagent from 'superagent';
 
 const superagent = superagentPromise(_superagent, global.Promise);
 
-const API_ROOT = 'http://localhost:8080';
+// const API_ROOT = 'http://localhost:8080';
 // const API_ROOT = 'http://192.168.1.102:8080';
+const API_ROOT = 'http://api.colombus.vn';
 
 const encode = encodeURIComponent;
 const responseBody = res => res.body;
@@ -104,6 +105,35 @@ const LaiXe = {
     requests.get(`/laixe/do/get/${id}`),
   PhuPhibyId: (id) =>
     requests.get(`/laixe/phuphi/get/${id}`),
+  autofill: () =>
+    requests.get(`/laixe/autofill/all`)
+}
+
+const IT = {
+  themThauPhu: data =>
+    requests.post('/it/users/themthauphu', {data}),
+  themDieuHanh: data =>
+    requests.post('/it/users/themdieuhanh', {data}),
+  danhsachThauPhu: () =>
+    requests.get('/it/users/danhsachthauphu'),
+  themLaiXe: data =>
+    requests.post('/it/users/themlaixe', {data}),
+  themAutoFill: (data) =>
+    requests.post(`/it/autofill/new`, data)
+}
+
+const DieuHanh = {
+  listDOchuaxacnhan: () =>
+    requests.get('/dieuhanh/do/chuaxacnhan'),
+  duyet: (id, action) =>
+    requests.post('/dieuhanh/do/duyet', {id: id, action: action})
+}
+
+const ThauPhu = {
+  themLaiXe: data =>
+    requests.post('/thauphu/users/themlaixe', {data}),
+  danhsachLaiXe: () =>
+    requests.get('/thauphu/users/laixe')
 }
 
 export default {
@@ -113,5 +143,8 @@ export default {
   Profile,
   Tags,
   LaiXe,
+  IT,
+  DieuHanh,
+  ThauPhu,
   setToken: _token => { token = _token; }
 };

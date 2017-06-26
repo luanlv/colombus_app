@@ -23,7 +23,19 @@ import LaiXeThemPhuPhi from './components/laixe/PhuPhi';
 import LaiXeListPhuPhi from './components/laixe/ListPhuPhi';
 import LaiXeEditPhuPhi from './components/laixe/EditPhuPhi';
 
+import ThemLaiXe from './components/it/LaiXe';
+import ThemThauPhu from './components/it/ThauPhu';
+import ThemDieuHanh from './components/it/DieuHanh';
 import HomeIT from './components/it/Home';
+import ThemAutoFill from './components/it/AutoFill';
+
+
+import HomeDieuHanh from './components/dieuhanh/Home';
+import DieuHanhDO from './components/dieuhanh/ListDO';
+
+import HomeThauPhu from './components/thauphu/Home';
+import ThauPhuDanhSachLaiXe from './components/thauphu/ListLaiXe';
+import ThauPhuThemLaiXe from './components/thauphu/LaiXe';
 
 ReactDOM.render((
   <Provider store={store}>
@@ -42,7 +54,18 @@ ReactDOM.render((
         <Route path="laixe/phuphi/:id" component={LaiXeEditPhuPhi} />
 
         <Route path="it" component={HomeIT} />
-
+        <Route path="it/thauphu" component={ThemThauPhu} />
+        <Route path="it/laixe" component={ThemLaiXe} />
+        <Route path="it/dieuhanh" component={ThemDieuHanh} />
+        <Route path="it/autofill" component={ThemAutoFill} />
+  
+        <Route path="dieuhanh" component={HomeDieuHanh} />
+        <Route path="dieuhanh/do" component={DieuHanhDO} />
+  
+        <Route path="thauphu" component={HomeThauPhu} />
+        <Route path="thauphu/laixe" component={ThauPhuDanhSachLaiXe} />
+        <Route path="thauphu/themlaixe" component={ThauPhuThemLaiXe} />
+        
         <Route path="login" component={Login} />
         <Route path="register" component={Register} />
         <Route path="editor" component={Editor} />

@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import {
   HOME_PAGE_LOADED,
   HOME_PAGE_UNLOADED,
-  LAIXE_DO_LOADED
+  LAIXE_PHUPHI_LOADED
 } from '../../constants/actionTypes';
 
 import {Button, Row, Icon} from 'antd'
@@ -26,7 +26,7 @@ const mapDispatchToProps = dispatch => ({
     dispatch({  type: HOME_PAGE_UNLOADED }),
 
   onLoad: ( payload) =>
-    dispatch({ type: LAIXE_DO_LOADED, payload }),
+    dispatch({ type: LAIXE_PHUPHI_LOADED, payload }),
 });
 
 class ListDO extends React.Component {
@@ -37,7 +37,7 @@ class ListDO extends React.Component {
   }
 
   componentWillMount() {
-    const articlesPromise = agent.LaiXe.listDO
+    const articlesPromise = agent.LaiXe.listPhuPhi
     this.props.onLoad(Promise.all([articlesPromise()]));
   }
 
@@ -59,7 +59,7 @@ class ListDO extends React.Component {
                   <Thead>
                   <Tr>
                     <Th/>
-                    <Th>Ly Do</Th>
+                    <Th>Ly do</Th>
                     <Th>So tien</Th>
                   </Tr>
                   </Thead>
@@ -70,10 +70,11 @@ class ListDO extends React.Component {
                         <Td>
                           {
                             (moment(el.timeEdit).diff(moment(Date.now())) > 0) ?
-                              (<Link to={"/laixe/do/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: '#08c' }} /></Link>) :
-                              (<Link to={"/laixe/do/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: 'red' }} /></Link>)
+                              (<Link to={"/laixe/phuphi/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: '#08c' }} /></Link>) :
+                              (<Link to={"/laixe/phuphi/" + el._id}><Icon type="edit" style={{ fontSize: 32, color: 'red' }} /></Link>)
                           }
                         </Td>
+
                         <Td>{el.khoanchi}</Td>
                         <Td>{el.sotien}</Td>
                         <Td />
@@ -85,7 +86,7 @@ class ListDO extends React.Component {
                 </Table>
               </div>
           )}
-          {!this.props.status.listDO && (
+          {!this.props.status.listPhuPhi && (
             <div>Loading !!!</div>
           )}
         </Row>

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { APP_LOAD, REDIRECT,
   LOGOUT} from '../constants/actionTypes';
 
-import { Layout, Menu, Button } from 'antd';
+import { Layout, Menu, Button, Spin } from 'antd';
 const { Header, Content, Footer } = Layout;
 
 import {Login} from './_components'
@@ -86,10 +86,8 @@ class App extends React.Component {
       }
     }
     return (
-      <div>
-
-        Loading ...
-
+      <div style={{textAlign: 'center', paddingTop: 50}}>
+        <Spin tip="Loading..." />
       </div>
     );
   }

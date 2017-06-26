@@ -93,7 +93,7 @@ class DOPage extends React.Component {
         let DO = res[0]
         that.setState(prev => { return {
           ...prev,
-          edit: (moment(DO.timeEdit).diff(moment(Date.now())) > 0) && !DO.trangthai.daduyet,
+          edit: (moment(DO.timeEdit).diff(moment(Date.now())) > 0),
           init: true,
           data: DO
         }})
@@ -149,10 +149,7 @@ class DOPage extends React.Component {
                 <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Số tiền thu : </span><b>{this.state.data.tienthu } VNĐ</b>
               </div>
               <div>
-                <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người duyệt : </span>
-                <b>
-                  {!this.state.data.trangthai.daduyet ? ("Đang xử lý") : (this.state.data.trangthai.duyet ? ("Dong y") : ("Khong dong y"))}
-                </b>
+                <span style={{width: 150, display: 'inline-block', fontWeight: 'bold', color: '#999'}}> Người duyệt : </span><b>Đang xử lý</b>
               </div>
             </div>
           </div>

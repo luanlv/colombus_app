@@ -45,6 +45,10 @@ class Home extends React.Component {
       this.context.router.replace('/laixe')
     if(this.props.currentUser.role === 'it')
       this.context.router.replace('/it')
+    if(this.props.currentUser.role === 'dieuhanh')
+      this.context.router.replace('/dieuhanh')
+    if(this.props.currentUser.role === 'thauphu')
+      this.context.router.replace('/thauphu')
     return (
       <div className="home-page">
       </div>

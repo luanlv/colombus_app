@@ -18,6 +18,20 @@
     padding: 0 5px;
 }
 
+.groupWr {
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 10px;
+}
+.groupWr .header {
+    text-align: left;
+    font-weight: lighter;
+    font-style: italic;
+    color: cadetblue;
+    margin-bottom: 10px;
+}
+
 .mt5 { margin-top: 5px  }
 .mt10 {  margin-top: 10px  }
 .mt20 {  margin-top: 20px  }
@@ -38,6 +52,10 @@
 
 .responsiveTable tbody tr .pivoted {
     border-bottom: 1px solid #eee;
+}
+
+.responsiveTable thead th {
+    text-align: left
 }
 
 @media screen and (max-width: 47.9375em) {

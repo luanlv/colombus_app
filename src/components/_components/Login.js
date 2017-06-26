@@ -52,7 +52,8 @@ class Component extends React.Component {
     return (
       <div className="auth-page">
         <div className="container page">
-          <div className="row">
+          <form action="" autoComplete="off">
+            <div className="row">
 
             <div className="loginWr">
               <h1 className="textCenter">Dang Nhap</h1>
@@ -83,7 +84,7 @@ class Component extends React.Component {
                          let value = e.target.value
                          this.setState(prev => {return {
                            ...prev,
-                           username: value
+                           username: value.toLowerCase()
                          }})
                        }}
                        placeholder="Ten Dang Nhap"
@@ -119,6 +120,7 @@ class Component extends React.Component {
             </div>
 
           </div>
+          </form>
         </div>
       </div>
     );
